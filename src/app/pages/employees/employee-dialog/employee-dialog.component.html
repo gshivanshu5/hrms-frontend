@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>
+  {{ isEditMode ? 'Edit Employee' : 'Add Employee' }}
+</h2>
+
+<div mat-dialog-content>
+  <form #empForm="ngForm" (ngSubmit)="onSave(empForm)">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Name</mat-label>
+      <input matInput required name="name" [(ngModel)]="employee.name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Email</mat-label>
+      <input matInput required name="email" type="email" [(ngModel)]="employee.email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Position</mat-label>
+      <input matInput name="position" [(ngModel)]="employee.position"
+        placeholder="Frontend Developer, QA Tester, etc." />
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Department</mat-label>
+      <input matInput name="department" [(ngModel)]="employee.department" placeholder="Engineering, QA, HR..." />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Status</mat-label>
+      <input matInput name="status" [(ngModel)]="employee.status" placeholder="active / inactive" />
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions align="end" class="actions">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSave(empForm)">
+    {{ isEditMode ? 'Update' : 'Save' }}
+  </button>
+</div>

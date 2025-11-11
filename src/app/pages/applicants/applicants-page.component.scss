@@ -1,0 +1,81 @@
+.page {
+  padding: 24px;
+  background-color: #f5f7fb;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #263238;
+  }
+
+  .add-btn {
+    background-color: #1976d2;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(25, 118, 210, 0.3);
+
+    &:hover {
+      background-color: #1565c0;
+    }
+  }
+}
+
+.filters-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filter-field {
+  flex: 1;
+}
+
+.loading,
+.no-results {
+  text-align: center;
+  color: #607d8b;
+  font-size: 1rem;
+  margin-top: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.applicant-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  mat-card-title {
+    font-weight: 600;
+    color: #1e88e5;
+  }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .status-select {
+    width: 100%;
+  }
+}

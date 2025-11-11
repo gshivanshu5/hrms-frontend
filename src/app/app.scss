@@ -1,0 +1,51 @@
+/* src/app/app.scss */
+
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 240px;
+  background: #fff;
+  border-right: 1px solid #ddd;
+}
+
+.sidenav-header {
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+}
+
+.sidenav-title {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.main-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.main-content {
+  padding: 24px;
+  background: #f6f7fb;
+  min-height: calc(100vh - 64px);
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-left: 10px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-nav-list a.active {
+  background: rgba(25, 118, 210, 0.1);
+  border-left: 4px solid #1976d2;
+}

@@ -1,0 +1,96 @@
+<div class="page">
+  <div class="header">
+    <h1>Job Applicants</h1>
+
+    <button
+      *ngIf="userRole === 'hr' || userRole === 'superadmin'"
+      mat-fab
+      color="primary"
+      class="add-btn"
+      (click)="openApplicantDialog()">
+      <mat-icon>person_add</mat-icon>
+    </button>
+  </div>
+
+  <!-- Filters Row -->
+  <div class="filters-row" *ngIf="!loading">
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Role</mat-label>
+      <mat-select [(ngModel)]="filterRole" (selectionChange)="applyFilters()">
+        <mat-option value="All">All Roles</mat-option>
+        <mat-option value="Frontend Developer">Frontend Developer</mat-option>
+        <mat-option value="Backend Developer">Backend Developer</mat-option>
+        <mat-option value="Tester">Tester</mat-option>
+        <mat-option value="Business Analyst">Business Analyst</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="filterStatus" (selectionChange)="applyFilters()">
+        <mat-option value="All">All Status</mat-option>
+        <mat-option value="New">New</mat-option>
+        <mat-option value="Shortlisted">Shortlisted</mat-option>
+        <mat-option value="Rejected">Rejected</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="loading" class="loading">Loading applicants...</div>
+  <div *ngIf="!loading && !filteredApplicants.length" class="no-results">
+    No applicants found.
+  </div>
+
+  <!-- Applicants Grid -->
+  <div class="grid" *ngIf="!loading && filteredApplicants.length">
+    <mat-card class="applicant-card" *ngFor="let applicant of filteredApplicants">
+      <mat-card-header>
+        <div class="card-header">
+          <div>
+            <mat-card-title>{{ applicant.name }}</mat-card-title>
+            <mat-card-subtitle>{{ applicant.appliedRole }}</mat-card-subtitle>
+          </div>
+
+          <div class="actions">
+            <button
+              *ngIf="userRole === 'hr' || userRole === 'superadmin'"
+              mat-icon-button
+              color="primary"
+              (click)="openApplicantDialog(applicant)">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button
+              *ngIf="userRole === 'superadmin'"
+              mat-icon-button
+              color="warn"
+              (click)="deleteApplicant(applicant)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p><strong>Email:</strong> {{ applicant.email }}</p>
+        <p><strong>Experience:</strong> {{ applicant.experience }}</p>
+        <p><strong>Contact:</strong> {{ applicant.contact }}</p>
+        <p>
+          <strong>Resume:</strong>
+          <a *ngIf="applicant.resume" [href]="applicant.resume" target="_blank">View</a>
+        </p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <mat-form-field appearance="fill" class="status-select">
+          <mat-label>Status</mat-label>
+          <mat-select [(ngModel)]="applicant.status" (selectionChange)="onStatusChange(applicant, $event.value)">
+            <mat-option value="New">New</mat-option>
+            <mat-option value="Shortlisted">Shortlisted</mat-option>
+            <mat-option value="Rejected">Rejected</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

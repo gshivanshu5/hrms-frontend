@@ -1,0 +1,53 @@
+.page {
+  padding: 24px;
+  background: #f9fbfd;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #263238;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 0 16px;
+}
+
+.full-table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+mat-header-cell {
+  font-weight: 600;
+  color: #37474f;
+}
+
+mat-cell {
+  color: #444;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+
+  &.active {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  &.inactive {
+    background: #ffebee;
+    color: #c62828;
+  }
+}
+
+.action-btn {
+  margin-right: 8px;
+}

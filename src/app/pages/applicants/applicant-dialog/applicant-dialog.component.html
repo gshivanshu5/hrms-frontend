@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>
+  {{ isEditMode ? 'Edit Applicant' : 'Add New Applicant' }}
+</h2>
+
+<div mat-dialog-content>
+  <form #appForm="ngForm" (ngSubmit)="onSave(appForm)">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Name</mat-label>
+      <input matInput name="name" required [(ngModel)]="applicant.name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Email</mat-label>
+      <input matInput name="email" type="email" required [(ngModel)]="applicant.email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Applied Role</mat-label>
+      <mat-select name="appliedRole" required [(ngModel)]="applicant.appliedRole">
+        <mat-option value="Frontend Developer">Frontend Developer</mat-option>
+        <mat-option value="Backend Developer">Backend Developer</mat-option>
+        <mat-option value="Tester">Tester</mat-option>
+        <mat-option value="Business Analyst">Business Analyst</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Experience</mat-label>
+      <input matInput name="experience" placeholder="e.g. 2 years" [(ngModel)]="applicant.experience" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Contact</mat-label>
+      <input matInput name="contact" placeholder="e.g. 9876543210" [(ngModel)]="applicant.contact" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Resume Link</mat-label>
+      <input matInput name="resume" placeholder="Paste resume URL" [(ngModel)]="applicant.resume" />
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSave(appForm)">
+    {{ isEditMode ? 'Update' : 'Save' }}
+  </button>
+</div>

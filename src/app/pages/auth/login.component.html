@@ -1,0 +1,42 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <h2>Welcome Back 👋</h2>
+    <p class="subtitle">Login to continue to HRMS</p>
+
+    <form (ngSubmit)="submit()" #form="ngForm">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+          autocomplete="username"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          autocomplete="current-password"
+        />
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" class="full-width" [disabled]="loading">
+        <ng-container *ngIf="!loading; else spinnerTpl">Login</ng-container>
+      </button>
+
+      <ng-template #spinnerTpl>
+        <mat-spinner [diameter]="22" color="accent"></mat-spinner>
+      </ng-template>
+    </form>
+
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </mat-card>
+</div>
