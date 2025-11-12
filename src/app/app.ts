@@ -26,7 +26,7 @@ import { AuthService } from './core/services/auth.service';
   styleUrls: ['./app.scss']
 })
 export class AppComponent implements OnInit {
-  isCollapsed = false;
+  isCollapsed = true;
   user: any = null;
 
   constructor(private auth: AuthService, private router: Router) { }
