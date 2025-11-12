@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private baseUrl = 'http://localhost:4000/api/auth';
+  private baseUrl = 'https://hr-api-assess.onrender.com/api/auth';
   private tokenKey = 'hrms_token';
   private userKey = 'hrms_user';
   user: any = null;

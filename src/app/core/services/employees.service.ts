@@ -15,7 +15,7 @@ export interface Employee {
 
 @Injectable({ providedIn: 'root' })
 export class EmployeesService {
-  private baseUrl = 'http://localhost:4000/api/employees';
+  private baseUrl = 'https://hr-api-assess.onrender.com/api/employees';
 
   constructor(private http: HttpClient) {}
 

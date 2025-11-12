@@ -16,7 +16,7 @@ export interface Applicant {
 
 @Injectable({ providedIn: 'root' })
 export class ApplicantsService {
-  private baseUrl = 'http://localhost:4000/api/applicants';
+  private baseUrl = 'https://hr-api-assess.onrender.com/api/applicants';
 
   constructor(private http: HttpClient) {}
 
